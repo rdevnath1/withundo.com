@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undo | Returns Infrastructure for DTC Brands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #0EA5A9;
+            --accent-dark: #0B8A8E;
+            --accent-light: rgba(14, 165, 169, 0.07);
+            --accent-glow: rgba(14, 165, 169, 0.12);
+            --dark: #1A1A2E;
+            --text: #2D2D3F;
+            --text-secondary: #6B7080;
+            --bg: #FAFBFC;
+            --white: #FFFFFF;
+            --border: #E8EAED;
+            --red: #DC2626;
+            --red-bg: #FEE2E2;
+            --green: #059669;
+            --green-bg: #D1FAE5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 251, 252, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(232, 234, 237, 0.5);
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-for {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .nav-cta {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 22px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .nav-cta:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(14, 165, 169, 0.3);
+        }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 24px 80px;
+            position: relative;
+            background: var(--white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse 70% 40% at 50% -5%, var(--accent-glow), transparent),
+                radial-gradient(circle at 15% 85%, rgba(14, 165, 169, 0.03), transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 860px;
+            animation: fadeUp 0.7s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(30px, 3.6vw, 44px);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -1.5px;
+            color: var(--dark);
+            margin-bottom: 22px;
+        }
+        h1 .highlight { color: var(--accent); }
+
+        .hero-sub {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 16px 34px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .hero-cta:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(14, 165, 169, 0.3);
+        }
+        .hero-cta svg { transition: transform 0.2s ease; }
+        .hero-cta:hover svg { transform: translateX(3px); }
+
+        /* FLOW COMPARISON - SIDE BY SIDE */
+        .flow-section {
+            padding: 100px 24px;
+            background: var(--white);
+        }
+
+        .flow-section .section-eyebrow {
+            margin-bottom: 12px;
+        }
+
+        .flow-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 700;
+            text-align: center;
+            color: var(--dark);
+            letter-spacing: -1px;
+            margin-bottom: 56px;
+        }
+
+        .section-eyebrow {
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .flow-compare {
+            max-width: 880px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .flow-col {
+            border-radius: 16px;
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .flow-col.traditional {
+            background: var(--bg);
+            border: 1px solid var(--border);
+        }
+
+        .flow-col.undo {
+            background: var(--accent-light);
+            border: 2px solid rgba(14, 165, 169, 0.18);
+        }
+
+        .flow-col-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .flow-col.undo .flow-col-header {
+            border-bottom-color: rgba(14, 165, 169, 0.15);
+        }
+
+        .flow-col-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .flow-col.traditional .flow-col-title { color: var(--dark); }
+        .flow-col.undo .flow-col-title { color: var(--accent-dark); }
+
+        .flow-col-time {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 100px;
+        }
+
+        .flow-col.traditional .flow-col-time {
+            background: var(--red-bg);
+            color: var(--red);
+        }
+
+        .flow-col.undo .flow-col-time {
+            background: var(--green-bg);
+            color: var(--green);
+        }
+
+        .flow-steps-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .flow-step-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 0;
+            position: relative;
+        }
+
+        .flow-step-dot {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+            filter: grayscale(1);
+        }
+
+        .flow-col.traditional .flow-step-dot {
+            background: var(--white);
+            border: 1px solid var(--border);
+            opacity: 0.85;
+        }
+
+        .flow-col.undo .flow-step-dot {
+            background: var(--white);
+            border: 2px solid rgba(14, 165, 169, 0.3);
+            opacity: 1;
+            filter: grayscale(0.5);
+        }
+
+        .flow-step-text {
+            font-size: 14.5px;
+            font-weight: 500;
+        }
+
+        .flow-col.traditional .flow-step-text { color: var(--text); }
+        .flow-col.undo .flow-step-text { color: var(--dark); font-weight: 600; }
+
+        .flow-step-connector {
+            width: 3px;
+            height: 16px;
+            margin-left: 17px;
+            border-radius: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-col.traditional .flow-step-connector { background: #D1D5DB; }
+        .flow-col.undo .flow-step-connector { background: rgba(14, 165, 169, 0.35); }
+
+        .flow-spacer {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 0;
+        }
+
+        .flow-spacer-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            color: var(--accent);
+            font-weight: 600;
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        /* TABLE */
+        .table-section {
+            padding: 100px 24px;
+            background: var(--dark);
+        }
+
+        .compare-table-wrap {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .compare-table thead th {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 20px 24px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .compare-table thead th:first-child {
+            color: rgba(255,255,255,0.55);
+            background: transparent;
+        }
+
+        .compare-table thead th.col-old {
+            color: rgba(255,255,255,0.65);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .compare-table thead th.col-new {
+            color: var(--dark);
+            background: var(--accent);
+        }
+
+        .compare-table tbody td {
+            padding: 16px 24px;
+            font-size: 14.5px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            vertical-align: middle;
+            line-height: 1.5;
+        }
+
+        .compare-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .compare-table tbody td:first-child {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 13.5px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .compare-table tbody td.col-old {
+            color: rgba(255,255,255,0.65);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .compare-table tbody td.col-new {
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            background: rgba(14, 165, 169, 0.08);
+        }
+
+        .pill-red {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 5px;
+            background: var(--red-bg);
+            color: var(--red);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 13.5px;
+        }
+
+        .pill-green {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 5px;
+            background: var(--green-bg);
+            color: var(--green);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 13.5px;
+        }
+
+        .table-note {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 100px 24px 120px;
+            background: var(--white);
+        }
+
+        .cta-box {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--dark);
+            border-radius: 20px;
+            padding: 68px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -15%;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(14, 165, 169, 0.12), transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-box h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(26px, 3.2vw, 36px);
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.8px;
+            margin-bottom: 14px;
+            position: relative;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 32px;
+            position: relative;
+            line-height: 1.6;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-box .hero-cta { position: relative; }
+
+        /* FOOTER */
+        footer {
+            padding: 44px 24px 36px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .founder-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .founder-avatar {
+            width: 40px; height: 40px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .founder-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--dark);
+        }
+
+        .founder-divider {
+            color: var(--border);
+        }
+
+        .founder-link {
+            font-size: 14px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        .founder-link:hover { opacity: 0.7; }
+
+        .founder-bio {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav { padding: 14px 20px; }
+            .logo { font-size: 21px; }
+            .nav-for { display: none; }
+            .hero { padding: 110px 20px 60px; }
+
+            .flow-compare {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .flow-col { padding: 28px 24px; }
+
+            .compare-table-wrap { border-radius: 12px; }
+            .compare-table thead th { padding: 14px 16px; font-size: 13px; }
+            .compare-table tbody td { padding: 12px 16px; font-size: 13px; }
+            .table-note { font-size: 11.5px; }
+
+            .cta-box { padding: 48px 24px; }
+
+            .founder-top { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="logo">Undo</a>
+        <div class="nav-right">
+            <span class="nav-for">For DTC brands doing 10+ returns/day</span>
+            <a href="#early-access" class="nav-cta">Get Early Access</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Every return costs you $12 and 2 weeks to resell.<br><span class="highlight">We bring that down to $2 and 2 days.</span></h1>
+            <p class="hero-sub">When a customer returns an unworn item, Undo gives your next shopper the option to buy it at a discount. The item ships directly from the returning customer to the new buyer. No warehouse in between.</p>
+            <a href="#early-access" class="hero-cta">
+                Get Early Access
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- FLOW COMPARISON - SIDE BY SIDE VERTICAL -->
+    <section class="flow-section">
+        <div class="section-eyebrow">How it works</div>
+        <h2>Skip the warehouse entirely</h2>
+        <p style="text-align:center; font-size:16px; color:#6B7080; max-width:500px; margin:0 auto 48px; line-height:1.6;">Undo handles your resellable returns. Everything else flows through your existing process, unchanged.</p>
+
+        <div class="flow-compare">
+            <!-- TRADITIONAL -->
+            <div class="flow-col traditional">
+                <div class="flow-col-header">
+                    <div class="flow-col-title">Traditional returns</div>
+                    <div class="flow-col-time">2 weeks</div>
+                </div>
+                <div class="flow-steps-vertical">
+                    <div class="flow-step-item">
+                        <div class="flow-step-dot">👤</div>
+                        <div class="flow-step-text">Customer initiates return</div>
+                    </div>
+                    <div class="flow-step-connector"></div>
+                    <div class="flow-step-item">
+                        <div class="flow-step-dot">📦</div>
+                        <div class="flow-step-text">Item ships back to warehouse</div>
+                    </div>
+                    <div class="flow-step-connector"></div>
+                    <div class="flow-step-item">
+                        <div class="flow-step-dot">🔍</div>
+                        <div class="flow-step-text">Warehouse receives and inspects</div>
+                    </div>
+                    <div class="flow-step-connector"></div>
+                    <div class="flow-step-item">
+                        <div class="flow-step-dot">📋</div>
+                        <div class="flow-step-text">Manual grading for condition</div>
+                    </div>
+                    <div class="flow-step-connector"></div>
+                    <div class="flow-step-item">
+                        <div class="flow-step-dot">🏷️</div>
+                        <div class="flow-step-text">Restocked into inventory</div>
+                    </div>
+                    <div class="flow-step-connector"></div>
+                    <div class="flow-step-item">
+                        <div class="flow-step-dot">👤</div>
+                        <div class="flow-step-text">Eventually purchased by next customer</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNDO -->
+            <div class="flow-col undo">
+                <div class="flow-col-header">
+                    <div class="flow-col-title">With Undo</div>
+                    <div class="flow-col-time">2-4 days</div>
+                </div>
+                <div class="flow-steps-vertical">
+                    <div class="flow-step-item">
+                        <div class="flow-step-dot">👤</div>
+                        <div class="flow-step-text">Customer initiates return</div>
+                    </div>
+                    <div class="flow-step-connector"></div>
+                    <div class="flow-step-item">
+                        <div class="flow-step-dot">📸</div>
+                        <div class="flow-step-text">AI photo verification confirms condition</div>
+                    </div>
+                    <div class="flow-step-connector"></div>
+                    <div class="flow-step-item">
+                        <div class="flow-step-dot">👤</div>
+                        <div class="flow-step-text">Ships directly to the next buyer</div>
+                    </div>
+
+                    <div class="flow-spacer">
+                        <div class="flow-spacer-text">That's it. No warehouse, no wait.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="table-section">
+        <div class="compare-table-wrap">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="col-old">Traditional Returns</th>
+                        <th class="col-new">With Undo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Shipping, inspection,<br>grading &amp; restocking</td>
+                        <td class="col-old">
+                            <span class="pill-red">$12</span>
+                            <div class="table-note">Reverse shipping + warehouse processing per item</div>
+                        </td>
+                        <td class="col-new">
+                            <span class="pill-green">$2</span>
+                            <div class="table-note">No warehouse. $2 Undo processing fee</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Inventory re-availability</td>
+                        <td class="col-old"><span class="pill-red">2 weeks</span></td>
+                        <td class="col-new"><span class="pill-green">2-4 days</span></td>
+                    </tr>
+                    <tr>
+                        <td>Grading accuracy</td>
+                        <td class="col-old">
+                            <span class="pill-red">~85%</span>
+                            <div class="table-note">Industry avg. Manual, inconsistent across staff</div>
+                        </td>
+                        <td class="col-new">
+                            <span class="pill-green">94%</span>
+                            <div class="table-note">AI-powered, consistent every time</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Warehouse required</td>
+                        <td class="col-old"><span class="pill-red">Yes</span></td>
+                        <td class="col-new"><span class="pill-green">No</span></td>
+                    </tr>
+                    <tr>
+                        <td>Buyer protection</td>
+                        <td class="col-old">Internal QC before resale</td>
+                        <td class="col-new">
+                            48-hour inspection window
+                            <div class="table-note">Full refund if item doesn't match</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="early-access">
+        <div class="cta-box">
+            <h2>Turn more of your returns<br>into new sales</h2>
+            <p>If your DTC brand processes 10+ returns a day on Shopify, let's talk.</p>
+            <a href="https://calendly.com/" class="hero-cta" target="_blank">
+                Book a Call
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="founder-top">
+                <span class="founder-name">Rajan · Founder</span>
+                <span class="founder-divider">|</span>
+                <a href="https://linkedin.com/in/rdevnath" target="_blank" class="founder-link">LinkedIn</a>
+                <a href="mailto:rajan@withundo.com" class="founder-link">Email</a>
+            </div>
+            <div class="founder-bio">7+ years building logistics infrastructure across China, US &amp; SE Asia. Managed $120mn in fulfillment volume.</div>
+        </div>
+    </footer>
+
+</body>
+</html>
