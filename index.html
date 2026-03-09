@@ -167,6 +167,15 @@
         .hero-cta svg { transition: transform 0.2s ease; }
         .hero-cta:hover svg { transform: translateX(3px); }
 
+        .hero-credibility {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            margin-top: 28px;
+            max-width: 520px;
+            line-height: 1.5;
+            opacity: 0.85;
+        }
+
         /* FLOW COMPARISON - SIDE BY SIDE */
         .flow-section {
             padding: 100px 24px;
@@ -351,6 +360,23 @@
             opacity: 0.7;
         }
 
+        /* INTEGRATION BAR */
+        .integration-bar {
+            padding: 28px 24px;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .integration-bar p {
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.2px;
+        }
+
         /* TABLE */
         .table-section {
             padding: 100px 24px;
@@ -457,6 +483,34 @@
             color: var(--text-secondary);
             margin-top: 4px;
             line-height: 1.4;
+        }
+
+        /* ECONOMICS CALLOUT */
+        .economics-callout {
+            padding: 72px 24px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .economics-inner {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .economics-stat {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(22px, 2.8vw, 32px);
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: -0.8px;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .economics-sub {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
         /* CTA */
@@ -604,7 +658,7 @@
     <nav>
         <a href="#" class="logo">Undo</a>
         <div class="nav-right">
-            <span class="nav-for">For DTC brands doing 10+ returns/day</span>
+            <span class="nav-for">For DTC brands doing 150+ returns/month</span>
             <a href="#early-access" class="nav-cta">Get Early Access</a>
         </div>
     </nav>
@@ -613,11 +667,12 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Every return costs you $12 and 2 weeks to resell.<br><span class="highlight">We bring that down to $2 and 2 days.</span></h1>
-            <p class="hero-sub">Our vision AI lets customers grade their own returns at home with 96% accuracy. Undo then matches the item to the next buyer, so it ships directly from doorstep to doorstep. No warehouses, no restocking.</p>
+            <p class="hero-sub">Our vision AI lets customers grade their own returns at home with 96% accuracy. Undo then matches the item to the next buyer, so it ships directly from doorstep to doorstep. No warehouses, no restocking. Items that don't qualify flow through your existing returns process, unchanged.</p>
             <a href="#early-access" class="hero-cta">
                 Get Early Access
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
+            <p class="hero-credibility">Built by a team with 7+ years in logistics infrastructure across China, US &amp; SE Asia — $120M+ in fulfillment volume managed.</p>
         </div>
     </section>
 
@@ -686,15 +741,16 @@
                     <div class="flow-step-connector"></div>
                     <div class="flow-step-item">
                         <div class="flow-step-dot">👤</div>
-                        <div class="flow-step-text">Ships directly to the next buyer</div>
-                    </div>
-
-                    <div class="flow-spacer">
-                        <div class="flow-spacer-text">That's it. No warehouse, no wait.</div>
+                        <div class="flow-step-text">Item is re-listed instantly. When the next buyer purchases, it ships direct. No reverse shipping. No warehouse stop. Customer to customer.</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- INTEGRATION LINE -->
+    <section class="integration-bar">
+        <p>Shopify app install. Live in under an hour. No changes to your existing returns setup.</p>
     </section>
 
     <!-- COMPARISON TABLE -->
@@ -705,7 +761,7 @@
                     <tr>
                         <th></th>
                         <th class="col-old">Traditional Returns</th>
-                        <th class="col-new">With Undo</th>
+                        <th class="col-new">Undo Returns</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -741,16 +797,46 @@
                         <td class="col-old"><span class="pill-red">Yes</span></td>
                         <td class="col-new"><span class="pill-green">No</span></td>
                     </tr>
+                    <tr>
+                        <td>Value recovered<br>(% of retail price)</td>
+                        <td class="col-old">
+                            <span class="pill-red">15-25%</span>
+                            <div class="table-note">Via liquidation</div>
+                        </td>
+                        <td class="col-new">
+                            <span class="pill-green">35-40%</span>
+                            <div class="table-note">Via P2P resale</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Refund speed /<br>customer experience</td>
+                        <td class="col-old">
+                            <span class="pill-red">~2 weeks</span>
+                            <div class="table-note">High friction</div>
+                        </td>
+                        <td class="col-new">
+                            <span class="pill-green">~5 days</span>
+                            <div class="table-note">Seamless</div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
+        </div>
+    </section>
+
+    <!-- ECONOMICS CALLOUT -->
+    <section class="economics-callout">
+        <div class="economics-inner">
+            <p class="economics-stat">A $10M DTC brand loses ~$330,000/year to returns inefficiency.</p>
+            <p class="economics-sub">Most of that is recoverable. We'll show you how.</p>
         </div>
     </section>
 
     <!-- CTA -->
     <section class="cta-section" id="early-access">
         <div class="cta-box">
-            <h2>Stop losing $12<br>on every return</h2>
-            <p>If your DTC brand processes 10+ returns a day on Shopify, let's talk.</p>
+            <h2>We'll model your exact returns economics on a 20-minute call.</h2>
+            <p>If your DTC brand processes 150+ returns a month on Shopify, let's talk.</p>
             <a href="https://calendly.com/rdevnath/20min" class="hero-cta" target="_blank">
                 Book a Call
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
