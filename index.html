@@ -302,25 +302,36 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
             flex-shrink: 0;
             position: relative;
             z-index: 2;
-            filter: grayscale(1);
+        }
+
+        .flow-step-dot svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .flow-col.traditional .flow-step-dot {
             background: var(--white);
             border: 1px solid var(--border);
-            opacity: 0.85;
-            filter: grayscale(1) contrast(1) brightness(0.8);
+        }
+
+        .flow-col.traditional .flow-step-dot svg {
+            stroke: #6B7280;
         }
 
         .flow-col.undo .flow-step-dot {
-            background: var(--white);
-            border: 2px solid rgba(14, 165, 169, 0.3);
-            opacity: 0.9;
-            filter: grayscale(1) contrast(1) brightness(0.8);
+            background: rgba(14, 165, 169, 0.08);
+            border: 1.5px solid rgba(14, 165, 169, 0.25);
+        }
+
+        .flow-col.undo .flow-step-dot svg {
+            stroke: #0EA5A9;
         }
 
         .flow-step-text {
@@ -329,7 +340,7 @@
         }
 
         .flow-col.traditional .flow-step-text { color: var(--text); }
-        .flow-col.undo .flow-step-text { color: var(--dark); font-weight: 600; }
+        .flow-col.undo .flow-step-text { color: var(--dark); font-weight: 500; }
 
         .flow-step-connector {
             width: 3px;
@@ -682,32 +693,32 @@
                 </div>
                 <div class="flow-steps-vertical">
                     <div class="flow-step-item">
-                        <div class="flow-step-dot">👤</div>
+                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
                         <div class="flow-step-text">Customer initiates return</div>
                     </div>
                     <div class="flow-step-connector"></div>
                     <div class="flow-step-item">
-                        <div class="flow-step-dot">📦</div>
+                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
                         <div class="flow-step-text">Item ships back to warehouse</div>
                     </div>
                     <div class="flow-step-connector"></div>
                     <div class="flow-step-item">
-                        <div class="flow-step-dot">🔍</div>
+                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
                         <div class="flow-step-text">Warehouse receives and inspects</div>
                     </div>
                     <div class="flow-step-connector"></div>
                     <div class="flow-step-item">
-                        <div class="flow-step-dot">📋</div>
+                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
                         <div class="flow-step-text">Manual grading for condition</div>
                     </div>
                     <div class="flow-step-connector"></div>
                     <div class="flow-step-item">
-                        <div class="flow-step-dot">🏷️</div>
+                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/><path d="m9 16 3-3 3 3"/></svg></div>
                         <div class="flow-step-text">Restocked into inventory</div>
                     </div>
                     <div class="flow-step-connector"></div>
                     <div class="flow-step-item">
-                        <div class="flow-step-dot">👤</div>
+                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
                         <div class="flow-step-text">Eventually purchased by next customer</div>
                     </div>
                 </div>
@@ -721,17 +732,17 @@
                 </div>
                 <div class="flow-steps-vertical">
                     <div class="flow-step-item">
-                        <div class="flow-step-dot">👤</div>
+                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
                         <div class="flow-step-text">Customer initiates return</div>
                     </div>
                     <div class="flow-step-connector"></div>
                     <div class="flow-step-item">
-                        <div class="flow-step-dot">📸</div>
+                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg></div>
                         <div class="flow-step-text">AI video verification confirms condition. Re-listed instantly (optional: retailer discounted)</div>
                     </div>
                     <div class="flow-step-connector"></div>
                     <div class="flow-step-item">
-                        <div class="flow-step-dot">👤</div>
+                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div>
                         <div class="flow-step-text">Ships direct from customer to customer.</div>
                     </div>
                 </div>
