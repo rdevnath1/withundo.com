@@ -183,7 +183,7 @@
             opacity: 0.85;
         }
 
-        /* FLOW COMPARISON - SIDE BY SIDE */
+        /* FLOW COMPARISON */
         .flow-section {
             padding: 100px 24px;
             background: #F7F9FB;
@@ -225,84 +225,78 @@
             line-height: 1.6;
         }
 
-        .flow-compare {
-            max-width: 880px;
-            margin: 0 auto;
+        .returns-comparison {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
+            max-width: 880px;
+            margin: 0 auto;
         }
 
-        .flow-col {
+        .returns-col {
             border-radius: 16px;
             padding: 36px 32px;
-            position: relative;
         }
 
-        .flow-col.traditional {
+        .returns-col--traditional {
             background: var(--bg);
             border: 1px solid var(--border);
         }
 
-        .flow-col.undo {
+        .returns-col--undo {
             background: var(--accent-light);
             border: 2px solid rgba(14, 165, 169, 0.18);
         }
 
-        .flow-col-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .returns-col__header {
             margin-bottom: 28px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
         }
 
-        .flow-col.undo .flow-col-header {
-            border-bottom-color: rgba(14, 165, 169, 0.15);
-        }
-
-        .flow-col-title {
+        .returns-col__label {
+            display: block;
             font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-        }
-
-        .flow-col.traditional .flow-col-title { color: var(--dark); }
-        .flow-col.undo .flow-col-title { color: var(--accent-dark); }
-
-        .flow-col-time {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 100px;
+            margin-bottom: 6px;
         }
 
-        .flow-col.traditional .flow-col-time {
-            background: var(--red-bg);
-            color: var(--red);
+        .returns-col--traditional .returns-col__label {
+            color: var(--text-secondary);
         }
 
-        .flow-col.undo .flow-col-time {
-            background: var(--green-bg);
-            color: var(--green);
+        .returns-col--undo .returns-col__label {
+            color: var(--accent-dark);
         }
 
-        .flow-steps-vertical {
+        .returns-col__time {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .returns-col--traditional .returns-col__time {
+            color: var(--dark);
+        }
+
+        .returns-col--undo .returns-col__time {
+            color: var(--accent);
+        }
+
+        .returns-step {
             display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .flow-step-item {
-            display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 14px;
-            padding: 14px 0;
             position: relative;
         }
 
-        .flow-step-dot {
+        .returns-step + .returns-step {
+            margin-top: 20px;
+        }
+
+        .returns-step__icon {
             width: 36px;
             height: 36px;
             border-radius: 50%;
@@ -314,68 +308,83 @@
             z-index: 2;
         }
 
-        .flow-step-dot svg {
-            width: 18px;
-            height: 18px;
+        .returns-step__icon svg {
+            width: 16px;
+            height: 16px;
             fill: none;
-            stroke-width: 1.8;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
-        .flow-col.traditional .flow-step-dot {
+        .returns-col--traditional .returns-step__icon {
             background: var(--white);
-            border: 1px solid var(--border);
+            border: 1.5px solid var(--border);
         }
 
-        .flow-col.traditional .flow-step-dot svg {
+        .returns-col--traditional .returns-step__icon svg {
             stroke: #6B7280;
+            stroke-width: 1.5;
         }
 
-        .flow-col.undo .flow-step-dot {
-            background: rgba(14, 165, 169, 0.08);
-            border: 1.5px solid rgba(14, 165, 169, 0.25);
+        .returns-col--undo .returns-step__icon {
+            background: var(--accent);
+            border: none;
         }
 
-        .flow-col.undo .flow-step-dot svg {
-            stroke: #0EA5A9;
+        .returns-col--undo .returns-step__icon svg {
+            stroke: #FFFFFF;
+            stroke-width: 1.5;
         }
 
-        .flow-step-text {
+        .returns-step__name {
             font-size: 14.5px;
+            padding-top: 8px;
+            line-height: 1.3;
+        }
+
+        .returns-col--traditional .returns-step__name {
+            color: var(--text-secondary);
+        }
+
+        .returns-col--undo .returns-step__name {
+            color: var(--dark);
             font-weight: 500;
         }
 
-        .flow-col.traditional .flow-step-text { color: var(--text); }
-        .flow-col.undo .flow-step-text { color: var(--dark); font-weight: 500; }
-
-        .flow-step-connector {
-            width: 3px;
-            height: 16px;
-            margin-left: 17px;
-            border-radius: 2px;
-            position: relative;
+        .returns-step__line {
+            position: absolute;
+            left: 17.5px;
+            top: 36px;
+            bottom: -20px;
+            width: 1.5px;
             z-index: 1;
         }
 
-        .flow-col.traditional .flow-step-connector { background: #D1D5DB; }
-        .flow-col.undo .flow-step-connector { background: rgba(14, 165, 169, 0.35); }
+        .returns-col--traditional .returns-step__line {
+            background: var(--border);
+        }
 
-        .flow-spacer {
-            flex: 1;
+        .returns-col--undo .returns-step__line {
+            background: rgba(14, 165, 169, 0.35);
+        }
+
+        .returns-empty {
+            margin-top: 32px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1.5px dashed rgba(14, 165, 169, 0.3);
+            opacity: 0.4;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 28px 0;
+            min-height: 120px;
+            text-align: center;
         }
 
-        .flow-spacer-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 15px;
-            color: var(--accent);
-            font-weight: 600;
-            font-style: italic;
-            opacity: 0.7;
+        .returns-empty span {
+            font-size: 13px;
+            color: var(--accent-dark);
+            line-height: 1.5;
         }
 
         /* INTEGRATION LINE */
@@ -644,12 +653,12 @@
             .nav-for { display: none; }
             .hero { padding: 110px 20px 60px; }
 
-            .flow-compare {
+            .returns-comparison {
                 grid-template-columns: 1fr;
                 gap: 16px;
             }
 
-            .flow-col { padding: 28px 24px; }
+            .returns-col { padding: 28px 24px; }
 
             .compare-table-wrap { border-radius: 12px; }
             .compare-table thead th { padding: 14px 16px; font-size: 13px; }
@@ -691,67 +700,88 @@
         <h2>Skip the warehouse entirely</h2>
         <p class="flow-subtitle">Undo handles your resellable returns. Everything else flows through your existing process, unchanged.</p>
 
-        <div class="flow-compare">
+        <div class="returns-comparison">
             <!-- TRADITIONAL -->
-            <div class="flow-col traditional">
-                <div class="flow-col-header">
-                    <div class="flow-col-title">Traditional returns</div>
-                    <div class="flow-col-time">2 weeks</div>
+            <div class="returns-col returns-col--traditional">
+                <div class="returns-col__header">
+                    <span class="returns-col__label">Traditional returns</span>
+                    <span class="returns-col__time">~14 days</span>
                 </div>
-                <div class="flow-steps-vertical">
-                    <div class="flow-step-item">
-                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-                        <div class="flow-step-text">Customer initiates return</div>
+                <div class="returns-steps">
+                    <div class="returns-step">
+                        <div class="returns-step__icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <span class="returns-step__name">Customer initiates return</span>
+                        <div class="returns-step__line"></div>
                     </div>
-                    <div class="flow-step-connector"></div>
-                    <div class="flow-step-item">
-                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
-                        <div class="flow-step-text">Item ships back to warehouse</div>
+                    <div class="returns-step">
+                        <div class="returns-step__icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                        </div>
+                        <span class="returns-step__name">Item ships back to warehouse</span>
+                        <div class="returns-step__line"></div>
                     </div>
-                    <div class="flow-step-connector"></div>
-                    <div class="flow-step-item">
-                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
-                        <div class="flow-step-text">Warehouse receives and inspects</div>
+                    <div class="returns-step">
+                        <div class="returns-step__icon">
+                            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                        </div>
+                        <span class="returns-step__name">Warehouse receives and inbounds</span>
+                        <div class="returns-step__line"></div>
                     </div>
-                    <div class="flow-step-connector"></div>
-                    <div class="flow-step-item">
-                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-                        <div class="flow-step-text">Manual grading for condition</div>
+                    <div class="returns-step">
+                        <div class="returns-step__icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        </div>
+                        <span class="returns-step__name">Manual condition grading</span>
+                        <div class="returns-step__line"></div>
                     </div>
-                    <div class="flow-step-connector"></div>
-                    <div class="flow-step-item">
-                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/><path d="m9 16 3-3 3 3"/></svg></div>
-                        <div class="flow-step-text">Restocked into inventory</div>
+                    <div class="returns-step">
+                        <div class="returns-step__icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 8V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                        </div>
+                        <span class="returns-step__name">Restocked into inventory</span>
+                        <div class="returns-step__line"></div>
                     </div>
-                    <div class="flow-step-connector"></div>
-                    <div class="flow-step-item">
-                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-                        <div class="flow-step-text">Eventually purchased by next customer</div>
+                    <div class="returns-step">
+                        <div class="returns-step__icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <span class="returns-step__name">Eventually purchased by next customer</span>
                     </div>
                 </div>
             </div>
 
             <!-- UNDO -->
-            <div class="flow-col undo">
-                <div class="flow-col-header">
-                    <div class="flow-col-title">Undo returns</div>
-                    <div class="flow-col-time">2-4 days</div>
+            <div class="returns-col returns-col--undo">
+                <div class="returns-col__header">
+                    <span class="returns-col__label">Undo returns</span>
+                    <span class="returns-col__time">2-4 days</span>
                 </div>
-                <div class="flow-steps-vertical">
-                    <div class="flow-step-item">
-                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-                        <div class="flow-step-text">Customer initiates return</div>
+                <div class="returns-steps">
+                    <div class="returns-step">
+                        <div class="returns-step__icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <span class="returns-step__name">Customer initiates return</span>
+                        <div class="returns-step__line"></div>
                     </div>
-                    <div class="flow-step-connector"></div>
-                    <div class="flow-step-item">
-                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg></div>
-                        <div class="flow-step-text">AI video verification confirms condition. Re-listed instantly (optional: retailer discounted)</div>
+                    <div class="returns-step">
+                        <div class="returns-step__icon">
+                            <svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                        </div>
+                        <span class="returns-step__name">AI verifies condition at home</span>
+                        <div class="returns-step__line"></div>
                     </div>
-                    <div class="flow-step-connector"></div>
-                    <div class="flow-step-item">
-                        <div class="flow-step-dot"><svg viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div>
-                        <div class="flow-step-text">Ships direct from customer to customer.</div>
+                    <div class="returns-step">
+                        <div class="returns-step__icon">
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                        <span class="returns-step__name">Ships direct to next customer</span>
                     </div>
+                </div>
+                <div class="returns-empty">
+                    <span>No warehouse. No restocking. No waiting.</span>
                 </div>
             </div>
         </div>
