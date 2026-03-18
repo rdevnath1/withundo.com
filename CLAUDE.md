@@ -4,7 +4,7 @@
 
 Undo (withundo.com) is B2B returns infrastructure for DTC brands on Shopify. Customers submit photos of returned items at home, AI verifies condition, eligible items ship peer-to-peer from returner to next buyer. No warehouse, no reverse shipping. Ineligible items flow through the brand's existing process unchanged.
 
-Reduces per-return cost from ~$21 to $3, turnaround from two weeks to two days. P2P applies to 30-45% of eligible returns (high-velocity SKUs, unworn items). Traditional disposition handles the rest.
+Reduces per-return cost from ~$21 to $4, turnaround from two weeks to two days. P2P applies to 30-45% of eligible returns (high-velocity SKUs, unworn items). Traditional disposition handles the rest.
 
 Founded by Rajan Devnath. 7+ years logistics infrastructure (including Portless), fulfillment across China, US, SE Asia. Brand color: #0EA5A9.
 
@@ -16,7 +16,7 @@ Pre-revenue, pre-product. Seeking 3-5 design partner customers through manual ou
 
 Website: withundo.com (GitHub Pages, Namecheap DNS). Live with "Get Early Access" and "Book a Call" CTAs.
 
-Accuracy: materials now say "up to 95% (AI + human review)." Internal research says 70-85% realistic standalone AI, 90-95% with hybrid review. The cost math ($21 to $3) is the stronger outreach hook.
+Accuracy: materials now say "up to 95% (AI + human review)." Internal research says 70-85% realistic standalone AI, 90-95% with hybrid review. The cost math ($21 to $4) is the stronger outreach hook.
 
 ---
 
@@ -38,7 +38,7 @@ Primary incumbent: Loop Returns. Adjacent: Happy Returns, Optoro, Trove/Recurate
 
 ## Pricing
 
-Current stated price: $3/return (early access rate). Recommended anchor: $3.50-$4.00. Introductory rate for early brands: $2.50-$3.00. Future: commission layer once Undo lists on external marketplaces.
+Current stated price: $4/return (early access rate). Future: commission layer once Undo lists on external marketplaces.
 
 ---
 
