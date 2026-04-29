@@ -178,10 +178,11 @@
         .hero-credibility {
             font-size: 13.5px;
             color: var(--text-secondary);
-            margin-top: 28px;
+            margin: 28px auto 0;
             max-width: 520px;
             line-height: 1.5;
             opacity: 0.85;
+            text-align: center;
         }
 
         /* FLOW COMPARISON */
@@ -576,6 +577,14 @@
 
         .cta-box .hero-cta { position: relative; }
 
+        .cta-qualifier {
+            font-size: 12.5px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 16px;
+            position: relative;
+            line-height: 1.5;
+        }
+
         /* FOOTER */
         footer {
             padding: 44px 24px 36px;
@@ -679,11 +688,12 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Every return costs you $21 and 2 weeks to resell.<br><span class="highlight">We bring that down to $4 and 2-4 days.</span></h1>
-            <p class="hero-sub">Our vision AI lets customers grade their own returns at home with up to 95% accuracy. Undo then matches the item to the next buyer, so it ships directly from doorstep to doorstep. No warehouses, no restocking.</p>
+            <p class="hero-sub">Undo turns eligible returns into direct resales. The customer verifies the item at home, we match it to the next buyer, and the package ships directly there instead of going back to your warehouse.</p>
             <a href="#early-access" class="hero-cta">
                 Get Early Access
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
+            <p class="hero-credibility">Works alongside your current returns process. Only eligible, verified items ship direct.</p>
         </div>
     </section>
 
@@ -691,7 +701,7 @@
     <section class="flow-section">
         <div class="section-eyebrow">How it works</div>
         <h2>Skip the warehouse entirely</h2>
-        <p class="flow-subtitle">Undo handles every return through the highest-value path. Eligible items match to your next buyer and ship direct. Everything else routes through your existing process or our recovery network.</p>
+        <p class="flow-subtitle">Undo only reroutes returns when there's a qualified next buyer. Anything unmatched, damaged, or ineligible stays in your existing return flow.</p>
 
         <div class="returns-comparison">
             <!-- TRADITIONAL -->
@@ -851,12 +861,13 @@
     <!-- CTA -->
     <section class="cta-section" id="early-access">
         <div class="cta-box">
-            <h2>We'll model your exact returns economics on a 20-min call. You'll leave with a written estimate of your current returns cost, projected savings for your specific SKU mix, and a draft 30-day pilot scope you can pressure-test internally.</h2>
-            <p>Built for North American apparel and footwear brands on Shopify doing $10M+ in annual revenue. If your brand processes 1000+ returns a month, let's talk.</p>
+            <h2>Model your returns savings<br>in 20 minutes</h2>
+            <p>We'll estimate your current return cost, projected savings, and a 30-day pilot scope for your SKU mix.</p>
             <a href="https://calendly.com/rdevnath/20min" class="hero-cta" target="_blank">
                 Book a Call
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
+            <p class="cta-qualifier">For North American Shopify apparel and footwear brands doing $10M+ revenue or 1,000+ returns/month.</p>
         </div>
     </section>
 
